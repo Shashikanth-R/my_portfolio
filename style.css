@@ -9,9 +9,9 @@
     --dark-gray: #666666;
     --charcoal: #1a1a2e;
     --black: #0a0a0a;
-    --accent: #2563eb;
-    --accent-hover: #1d4ed8;
-    --accent-light: #dbeafe;
+    --accent: #8B2942;
+    --accent-hover: #6d1f33;
+    --accent-light: #f8e8ec;
 
     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
@@ -44,6 +44,82 @@ body {
     line-height: 1.7;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* Animated Background Elements */
+.bg-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.08;
+    animation: float 20s ease-in-out infinite;
+}
+
+.bg-shape:nth-child(1) {
+    width: 400px;
+    height: 400px;
+    background-color: var(--accent);
+    top: -100px;
+    right: -100px;
+    animation-delay: 0s;
+}
+
+.bg-shape:nth-child(2) {
+    width: 300px;
+    height: 300px;
+    background-color: var(--accent);
+    bottom: 20%;
+    left: -150px;
+    animation-delay: -5s;
+}
+
+.bg-shape:nth-child(3) {
+    width: 200px;
+    height: 200px;
+    background-color: var(--charcoal);
+    top: 50%;
+    right: 10%;
+    animation-delay: -10s;
+}
+
+.bg-shape:nth-child(4) {
+    width: 150px;
+    height: 150px;
+    background-color: var(--accent);
+    bottom: 10%;
+    right: 30%;
+    animation-delay: -15s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+
+    25% {
+        transform: translateY(-30px) rotate(5deg) scale(1.05);
+    }
+
+    50% {
+        transform: translateY(20px) rotate(-5deg) scale(0.95);
+    }
+
+    75% {
+        transform: translateY(-15px) rotate(3deg) scale(1.02);
+    }
 }
 
 /* ========================================
@@ -97,24 +173,24 @@ section {
 }
 
 .btn-primary {
-    background-color: var(--charcoal);
+    background-color: var(--accent);
     color: var(--white);
 }
 
 .btn-primary:hover {
-    background-color: var(--black);
+    background-color: var(--accent-hover);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
 
 .btn-outline {
     background-color: transparent;
-    color: var(--charcoal);
-    border: 2px solid var(--charcoal);
+    color: var(--accent);
+    border: 2px solid var(--accent);
 }
 
 .btn-outline:hover {
-    background-color: var(--charcoal);
+    background-color: var(--accent);
     color: var(--white);
 }
 
@@ -486,7 +562,7 @@ section {
     display: block;
     font-size: 2.5rem;
     font-weight: 800;
-    color: var(--black);
+    color: var(--accent);
     line-height: 1;
     margin-bottom: 8px;
 }
@@ -536,18 +612,19 @@ section {
 }
 
 .skill-tag {
-    background-color: var(--white);
-    color: var(--charcoal);
+    background-color: var(--accent-light);
+    color: var(--accent);
     padding: 8px 16px;
     border-radius: 6px;
     font-size: 0.9rem;
     font-weight: 500;
-    border: 1px solid var(--medium-gray);
+    border: 1px solid transparent;
     transition: var(--transition);
 }
 
 .skill-category:hover .skill-tag {
-    border-color: var(--charcoal);
+    background-color: var(--accent);
+    color: var(--white);
 }
 
 /* ========================================

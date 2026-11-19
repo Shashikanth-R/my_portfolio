@@ -1,427 +1,773 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shashikanth R | Software Developer</title>
-    <meta name="description"
-        content="Portfolio of Shashikanth R - Software Developer specializing in Python, Flask, and Web Development">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shashikanth R | Python Developer, AI Application Developer, Backend Engineer</title>
+<meta name="description" content="Shashikanth R builds intelligent applications, scalable backend solutions and digital experiences. Python, Flask, REST APIs, LangChain, LangGraph and RAG.">
+<meta property="og:title" content="Shashikanth R | Python & AI Application Developer">
+<meta property="og:description" content="Engineering ideas into intelligent digital experiences.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F7F8FF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚡%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F8FF;--bg2:#EDEFFF;--card:#FFFFFF;--tx:#14162B;--tx2:#5B6078;--v:#7C5CFA;--c:#0EA5C9;--line:rgba(30,27,75,.1);--r:20px;
+--fd:'Space Grotesk',system-ui,sans-serif;--fb:'Inter',system-ui,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--tx);font:400 1rem/1.65 var(--fb);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%}
+.wrap{width:min(1180px,92%);margin:auto}
+section{padding:clamp(70px,10vw,130px) 0;position:relative}
+:focus-visible{outline:2px solid var(--c);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--v);padding:8px 14px;border-radius:8px;z-index:200}.skip:focus{left:8px}
+/* page entrance + bg */
+body{animation:enter .9s var(--ease)}@keyframes enter{from{opacity:0}to{opacity:1}}
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--bg)}
+.bg i{position:absolute;border-radius:50%;filter:blur(100px);opacity:.38;animation:drift 18s ease-in-out infinite alternate}
+.bg i:nth-child(1){width:520px;height:520px;background:var(--v);top:-120px;left:-100px}
+.bg i:nth-child(2){width:460px;height:460px;background:var(--c);right:-120px;top:35vh;animation-delay:-6s;opacity:.18}
+.bg::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 20%,#000 20%,transparent 75%);opacity:.5}
+@keyframes drift{to{transform:translate(60px,80px) scale(1.15)}}
+/* type */
+.eyebrow{font:500 .78rem var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--c);margin-bottom:16px;display:block}
+h1,h2,h3{font-family:var(--fd);line-height:1.05;letter-spacing:-.02em}
+h2{font-size:clamp(2.1rem,5vw,3.8rem);margin-bottom:20px;max-width:16ch}
+.grad{background:linear-gradient(100deg,var(--v),var(--c),var(--v));background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 7s linear infinite}
+@keyframes shift{to{background-position:250% 0}}
+.lead{color:var(--tx2);max-width:60ch;font-size:1.08rem}
+.quote{font:500 .9rem var(--fm);color:var(--tx2);margin-top:28px;padding-left:14px;border-left:2px solid var(--v)}
+/* nav */
+header{position:fixed;inset:0 0 auto;z-index:100;transition:.4s var(--ease)}
+header.s{background:rgba(247,248,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font:700 1.15rem var(--fd)}.logo b{color:var(--c)}
+.links{display:flex;gap:6px;list-style:none}
+.links a{padding:8px 13px;border-radius:99px;font-size:.88rem;color:var(--tx2);transition:.25s}
+.links a:hover,.links a.on{color:var(--tx);background:rgba(30,27,75,.06)}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--tx);width:42px;height:42px;border-radius:12px;cursor:pointer;font-size:1.1rem}
+.progress{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--v),var(--c))}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:99px;font:600 .92rem var(--fb);border:1px solid var(--line);background:rgba(30,27,75,.04);color:var(--tx);cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s,background .3s}
+.btn:hover{background:#fff;transform:translateY(-3px);background:rgba(30,27,75,.09)}
+.btn.p{color:#fff;background:linear-gradient(120deg,var(--v),#6d6cf0 55%,var(--c));border:0;box-shadow:0 8px 30px -8px var(--v)}
+.btn.p:hover{box-shadow:0 14px 40px -8px var(--v),0 0 0 1px rgba(34,211,238,.4)}
+.btn.lg{padding:18px 36px;font-size:1.05rem}
+/* hero */
+.hero{overflow-x:clip;min-height:100svh;display:flex;align-items:center;padding-top:110px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+.avail{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border:1px solid var(--line);border-radius:99px;font-size:.82rem;color:var(--tx2);background:rgba(30,27,75,.03);margin-bottom:26px}
+.dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 #34d399;animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px transparent}}
+.hero h1{font-size:clamp(2.6rem,6vw,5.2rem);margin-bottom:24px}
+.hero p.lead{margin-bottom:24px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.pill{font:500 .76rem var(--fm);padding:6px 12px;border-radius:99px;border:1px solid var(--line);color:var(--tx2);background:var(--bg2)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.soc{display:flex;gap:18px;font-size:.9rem;color:var(--tx2)}.soc a:hover{color:var(--c)}
+/* dashboard */
+.dash{position:relative;perspective:1200px}
+.term{background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:var(--r);box-shadow:0 40px 80px -30px rgba(139,92,246,.45);transform:rotateY(-8deg) rotateX(4deg);transition:transform .2s;overflow:hidden}
+.tbar{display:flex;gap:7px;padding:13px 16px;border-bottom:1px solid var(--line);align-items:center}
+.tbar i{width:10px;height:10px;border-radius:50%;background:#ff5f57}.tbar i:nth-child(2){background:#febc2e}.tbar i:nth-child(3){background:#28c840}
+.tbar span{margin-left:auto;font:.72rem var(--fm);color:var(--tx2)}
+.tbody{padding:20px;font:.8rem/1.9 var(--fm);min-height:230px;color:var(--tx2)}
+.tbody .k{color:var(--v)}.tbody .s{color:var(--c)}.tbody .ok{color:#34d399}
+.caret{display:inline-block;width:8px;height:15px;background:var(--c);vertical-align:-2px;animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+.flow{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-top:1px solid var(--line);font:.7rem var(--fm)}
+.flow span{padding:6px 10px;border-radius:10px;background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.3)}
+.flow em{flex:1;height:2px;margin:0 6px;background:linear-gradient(90deg,var(--v),var(--c));background-size:200%;animation:shift 2s linear infinite;opacity:.7}
+.float{position:absolute;padding:8px 14px;border-radius:12px;background:rgba(255,255,255,.94);border:1px solid var(--line);font:500 .74rem var(--fm);backdrop-filter:blur(8px);animation:bob 6s ease-in-out infinite;box-shadow:0 14px 30px -10px rgba(60,50,140,.3)}
+.float.a{top:-18px;right:6%;color:var(--c)}.float.b{bottom:70px;left:-26px;color:var(--v);animation-delay:-2s}.float.c{bottom:-20px;right:10%;color:#34d399;animation-delay:-4s}
+@keyframes bob{50%{transform:translateY(-14px)}}
+/* cards */
+.grid{display:grid;gap:18px}
+.card{background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:var(--r);padding:28px;position:relative;overflow:hidden;transition:transform .4s var(--ease),border-color .3s}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),rgba(139,92,246,.16),transparent 60%);opacity:0;transition:opacity .3s}
+.card:hover{transform:translateY(-6px);border-color:rgba(139,92,246,.4)}.card:hover::before{opacity:1}
+.card>*{position:relative}
+/* about */
+.hl{grid-template-columns:repeat(4,1fr);margin-top:44px}
+.hl .card{padding:22px}.hl b{font:700 1.05rem var(--fd);display:block;margin-bottom:4px}.hl span{color:var(--tx2);font-size:.86rem}
+.ico{font-size:1.5rem;margin-bottom:12px;display:block}
+/* expertise */
+.skills{grid-template-columns:repeat(3,1fr);margin-top:40px}
+.skills h3{font-size:1.25rem;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border-radius:10px;background:rgba(30,27,75,.04);border:1px solid var(--line);font-size:.84rem;transition:.25s}
+.chip:hover{border-color:var(--c);color:var(--c);transform:translateY(-2px)}
+.chip small{font:.62rem var(--fm);color:var(--c);padding:2px 6px;border-radius:6px;background:rgba(34,211,238,.12)}
+.bar{height:5px;border-radius:9px;background:rgba(30,27,75,.07);margin-top:18px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--v),var(--c));border-radius:9px;transition:width 1.4s var(--ease) .3s}
+.in .bar i{width:var(--w)}
+.note{font-size:.76rem;color:var(--tx2);margin-top:8px}
+/* timeline */
+.tl{margin-top:44px;position:relative;padding-left:34px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--v),var(--c),transparent)}
+.tl .card{margin-bottom:18px}.tl .card::after{content:"";position:absolute;left:-34px;top:34px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--c);box-shadow:0 0 14px var(--c)}
+.tl .card{overflow:visible}
+.tl h3{font-size:1.25rem}.tl .meta{font:.78rem var(--fm);color:var(--c);margin:4px 0 10px}.tl p{color:var(--tx2)}
+/* projects */
+.project-showcase{margin-top:40px;display:grid;gap:50px}
+.project-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 10px 30px -15px rgba(30,27,75,.08);overflow:hidden;transition:box-shadow .3s var(--ease),border-color .3s var(--ease)}
+.project-card:hover{box-shadow:0 20px 40px -15px rgba(30,27,75,.14);border-color:rgba(124,92,250,.3)}
+.project-layout{display:grid;grid-template-columns:1fr 1.05fr;align-items:stretch}
+.project-card.reverse .project-layout{direction:rtl}
+.project-card.reverse .project-layout>*{direction:ltr}
+.project-info{padding:clamp(32px,4vw,50px);display:flex;flex-direction:column;justify-content:center}
+.project-number{font-family:var(--fd);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;color:var(--tx2);line-height:1;margin-bottom:12px;opacity:.45}
+.project-title{font-size:clamp(1.6rem,2.4vw,2.2rem);margin-bottom:8px;font-family:var(--fd);color:var(--tx)}
+.project-subtitle{font-family:var(--fm);font-size:.88rem;color:var(--v);font-weight:600;margin-bottom:18px;display:block}
+.project-desc{font-size:1rem;color:var(--tx2);line-height:1.6;margin-bottom:20px}
+.project-contrib{list-style:none;display:grid;gap:10px;margin-bottom:24px;padding:0}
+.project-contrib li{position:relative;padding-left:20px;font-size:.9rem;color:var(--tx2);line-height:1.5}
+.project-contrib li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--v)}
+.project-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;font-family:var(--fm);font-size:.76rem;font-weight:500;border-radius:6px;background:var(--bg2);color:var(--tx2);border:1px solid var(--line)}
+.tag-accent{background:rgba(124,92,250,.1);color:var(--v);border-color:rgba(124,92,250,.25)}
+.project-links{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.btn-sm{padding:8px 16px;font-size:.84rem}
+.project-mockup{background:#F8FAFC;border-left:1px solid var(--line);padding:clamp(24px,3.5vw,40px);display:flex;flex-direction:column;justify-content:center;position:relative}
+.project-card.reverse .project-mockup{border-left:none;border-right:1px solid var(--line)}
+.mockup-window{background:#FFFFFF;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 25px -5px rgba(30,27,75,.08);overflow:hidden;width:100%}
+.mockup-bar{background:var(--bg2);border-bottom:1px solid var(--line);padding:10px 14px;display:flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.72rem;color:var(--tx2)}
+.mockup-bar-dots{display:flex;gap:5px}
+.mockup-bar-dots span{width:8px;height:8px;border-radius:50%;background:#CBD5E1}
+.mockup-bar-url{margin-left:auto;background:#FFFFFF;padding:2px 10px;border-radius:4px;border:1px solid var(--line)}
+.mockup-canvas{padding:20px}
+.mockup-caption{font-family:var(--fm);font-size:.72rem;color:var(--tx2);margin-top:14px;text-align:center}
+.mall-map-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;background:#F1F5F9;padding:14px;border-radius:8px;border:1px solid var(--line);margin-bottom:14px}
+.map-cell{aspect-ratio:1;background:#FFFFFF;border-radius:4px;border:1px solid rgba(15,23,42,.05);transition:background-color .3s}
+.map-cell.path{background:#4F46E5;border-color:#4F46E5}
+.map-cell.start{background:#059669;border-color:#059669}
+.map-cell.end{background:#DC2626;border-color:#DC2626}
+.map-cell.wall{background:#94A3B8;border-color:#64748B}
+.mall-status-row{display:flex;justify-content:space-between;align-items:center;font-family:var(--fm);font-size:.75rem;color:var(--tx2)}
+.edu-search-bar{display:flex;align-items:center;gap:8px;background:#F1F5F9;border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-family:var(--fm);font-size:.78rem;color:var(--tx2);margin-bottom:14px}
+.edu-cards-mini{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.edu-card-mini{background:#FFFFFF;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:.8rem}
+.edu-card-mini b{display:block;color:var(--tx);font-size:.85rem}
+.edu-card-mini span{color:var(--tx2);font-size:.72rem}
+.edu-card-rating{color:#D97706;font-weight:600;font-size:.72rem;margin-top:4px}
+.vox-mic-box{background:#F1F5F9;border:1px solid var(--line);border-radius:8px;padding:14px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.vox-wave{display:flex;align-items:center;gap:4px;height:28px}
+.wave-bar{width:4px;background:var(--v);border-radius:2px;animation:wavePulse 1.2s infinite ease-in-out}
+.wave-bar:nth-child(2){animation-delay:.2s;height:16px}.wave-bar:nth-child(3){animation-delay:.4s;height:26px}.wave-bar:nth-child(4){animation-delay:.1s;height:12px}.wave-bar:nth-child(5){animation-delay:.3s;height:22px}.wave-bar:nth-child(6){animation-delay:.5s;height:18px}
+@keyframes wavePulse{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
+.vox-transcription{background:#FFFFFF;border:1px solid var(--line);border-radius:8px;padding:12px;font-family:var(--fm);font-size:.78rem;color:var(--tx);min-height:60px}
+.recipe-assistant-box{background:#F1F5F9;border:1px solid var(--line);border-radius:8px;padding:14px}
+.recipe-chat-bubble{background:#FFFFFF;border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:.82rem;margin-bottom:8px;color:var(--tx)}
+.recipe-chat-bubble.bot{background:rgba(124,92,250,.1);border-color:rgba(124,92,250,.25);color:var(--tx)}
+@media(max-width:960px){.project-layout,.project-card.reverse .project-layout{grid-template-columns:1fr;direction:ltr!important}.project-mockup,.project-card.reverse .project-mockup{border-left:none;border-right:none;border-top:1px solid var(--line)}}
+/* achievements / edu */
+.ach{grid-template-columns:repeat(2,1fr);margin-top:40px}
+.ach .card{display:flex;gap:18px;align-items:flex-start}.ach .ico{font-size:2rem;margin:0}
+.ach h3{font-size:1.15rem;margin-bottom:6px}.ach p{color:var(--tx2);font-size:.9rem}
+/* work */
+.cc{text-align:center;background:linear-gradient(180deg,var(--bg2),transparent);border-top:1px solid var(--line)}
+.cc h2{margin-inline:auto;max-width:20ch}.cc .lead{margin:0 auto 14px}
+.svc{grid-template-columns:repeat(4,1fr);margin:44px 0;text-align:left}
+.svc .card{padding:22px;font-size:.92rem}
+/* contact */
+.ct{grid-template-columns:1fr 1.1fr;gap:50px;margin-top:20px}
+.cl{display:grid;gap:12px;margin-top:26px}.cl a{display:flex;justify-content:space-between;padding:16px 20px;border:1px solid var(--line);border-radius:14px;background:var(--card);transition:.3s}
+.cl a:hover{border-color:var(--c);transform:translateX(6px)}.cl small{color:var(--tx2)}
+form{display:grid;gap:16px}
+label{font-size:.82rem;color:var(--tx2);display:grid;gap:7px}
+input,textarea{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px;color:var(--tx);font:inherit;width:100%;transition:.25s}
+input:focus,textarea:focus{outline:0;border-color:var(--v);box-shadow:0 0 0 3px rgba(139,92,246,.2)}
+textarea{min-height:140px;resize:vertical}
+.err{color:#fb7185;font-size:.76rem;min-height:1em}
+[aria-invalid=true]{border-color:#fb7185}
+#fs{font-size:.84rem;color:var(--tx2)}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--tx2);font-size:.84rem}
+.top{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.94);color:var(--tx);cursor:pointer;opacity:0;transform:translateY(20px);pointer-events:none;transition:.4s var(--ease);z-index:90}
+.top.on{opacity:1;transform:none;pointer-events:auto}.top:hover{border-color:var(--c);color:var(--c)}
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i,0)*90ms)}
+.rv.in{opacity:1;transform:none}
+.word{display:inline-block;opacity:0;transform:translateY(40px);animation:up .9s var(--ease) forwards;animation-delay:calc(var(--w)*70ms + .3s)}
+@keyframes up{to{opacity:1;transform:none}}
+/* responsive */
+@media(max-width:960px){
+.hero .wrap,.proj .wrap,.ct{grid-template-columns:1fr}.proj:nth-of-type(even) .wrap{direction:ltr}
+.hl,.svc{grid-template-columns:repeat(2,1fr)}.skills{grid-template-columns:repeat(2,1fr)}.term{transform:none}.float.b{left:0}
+.burger{display:block}.links{position:absolute;top:68px;left:0;right:0;flex-direction:column;background:rgba(247,248,255,.98);padding:12px 4%;border-bottom:1px solid var(--line);display:none}
+.links.open{display:flex}}
+@media(max-width:600px){.hl,.svc,.skills,.ach{grid-template-columns:1fr}.cta .btn{width:100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html{scroll-behavior:auto}.rv,.word{opacity:1;transform:none}}
+
+.term{--tx:#F5F7FA;--tx2:#A1A8B5;--line:rgba(255,255,255,.1);background:#10131B;color:var(--tx)}
+.card{box-shadow:0 10px 30px -18px rgba(60,50,140,.25)}
+.bg::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:#FF7AB6;filter:blur(110px);opacity:.22;left:40%;bottom:-120px}
+/* marquee */
+.marq{overflow:hidden;border-block:1px solid var(--line);background:var(--card);padding:18px 0;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marq div{display:flex;width:max-content;animation:mq 34s linear infinite}.marq:hover div{animation-play-state:paused}
+.marq span{margin-right:14px;padding:9px 18px;border-radius:99px;border:1px solid var(--line);background:var(--bg);font:500 .85rem var(--fm);white-space:nowrap}
+.marq span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:9px;background:linear-gradient(135deg,var(--v),var(--c))}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* scroll-lit statement */
+.stm{font:700 clamp(1.9rem,4.8vw,3.8rem)/1.15 var(--fd);letter-spacing:-.02em;max-width:22ch}
+.stm span{opacity:.16;transition:opacity .45s}.stm span.on{opacity:1}
+/* steps + chat */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:44px 0;text-align:left}
+.steps{display:grid;gap:14px}
+.st{display:flex;gap:16px;align-items:center;padding:16px 20px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.st b{display:block;font-family:var(--fd)}.st span{font-size:.85rem;color:var(--tx2)}
+.ck{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--line);color:transparent;font-weight:700;transition:.5s var(--ease) calc(var(--i)*.35s + .4s)}
+.st.in .ck{background:linear-gradient(135deg,var(--v),var(--c));color:#fff;border-color:transparent;transform:scale(1.05)}
+.chat{display:grid;gap:10px;align-content:start}
+.chat small{font:.7rem var(--fm);color:var(--tx2);margin-bottom:4px}
+.bub{max-width:85%;padding:11px 15px;border-radius:16px;font-size:.88rem;opacity:0;transform:translateY(12px) scale(.96)}
+.bub.me{justify-self:end;background:linear-gradient(120deg,var(--v),var(--c));color:#fff;border-bottom-right-radius:4px}
+.bub.cl2{background:var(--bg2);border-bottom-left-radius:4px}
+.chat.in .bub{animation:pop .5s var(--ease) forwards;animation-delay:calc(var(--d)*1.1s + .3s)}
+@keyframes pop{to{opacity:1;transform:none}}
+.typing{display:flex;gap:5px;width:max-content;padding:12px 14px}.typing i{width:7px;height:7px;border-radius:50%;background:var(--tx2);animation:bob 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+/* animals */
+.pet{position:fixed;left:0;bottom:0;width:72px;z-index:80;pointer-events:none;transition:transform .12s linear}
+.lg{fill:#E8852D;transform-box:fill-box;transform-origin:50% 0;animation:run .45s ease-in-out infinite alternate}.l2,.l3{animation-delay:-.45s}
+@keyframes run{from{transform:rotate(-28deg)}to{transform:rotate(28deg)}}
+.tail{transform-box:fill-box;transform-origin:100% 100%;animation:wag .6s ease-in-out infinite alternate}@keyframes wag{from{transform:rotate(-14deg)}to{transform:rotate(14deg)}}
+.pet:not(.go) .lg{animation-play-state:paused}
+.cb{animation:hop .45s ease-in-out infinite alternate}@keyframes hop{to{transform:translateY(-2px)}}
+.pet:not(.go) .cb{animation-play-state:paused}
+.bird{position:absolute;left:-70px;width:44px;fill:var(--v);opacity:.7;animation:fly 24s linear infinite;pointer-events:none}
+.bird path{transform-box:fill-box;transform-origin:50% 100%;animation:flap .5s ease-in-out infinite alternate}
+@keyframes fly{0%{transform:translate(0,0)}50%{transform:translate(55vw,-40px)}100%{transform:translate(115vw,25px)}}
+@keyframes flap{to{transform:scaleY(.45)}}
+.snake{display:block;width:min(420px,100%);height:34px;margin:6px 0 22px}
+.snake path{fill:none;stroke:#34D399;stroke-width:9;stroke-linecap:round;stroke-dasharray:150 850;animation:crawl 7s linear infinite}
+@keyframes crawl{from{stroke-dashoffset:150}to{stroke-dashoffset:-850}}
+#contact{overflow-x:clip}
+.bf{position:absolute;font-size:1.7rem;animation:wander 15s ease-in-out infinite;pointer-events:none}
+.bf span{display:inline-block;animation:flapx .4s ease-in-out infinite alternate}@keyframes flapx{to{transform:scaleX(.35)}}
+@keyframes wander{0%,100%{transform:translate(0,0) rotate(-8deg)}25%{transform:translate(70px,-45px) rotate(10deg)}50%{transform:translate(150px,10px) rotate(-6deg)}75%{transform:translate(60px,55px) rotate(8deg)}}
+@media(max-width:960px){.duo{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.pet,.bird,.bf{display:none}.stm span{opacity:1}.bub{opacity:1;transform:none}.snake path{stroke-dasharray:none}}
+</style>
 </head>
-
 <body>
-    <!-- Animated Background -->
-    <div class="bg-shapes">
-        <div class="bg-shape"></div>
-        <div class="bg-shape"></div>
-        <div class="bg-shape"></div>
-        <div class="bg-shape"></div>
-    </div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="bg" aria-hidden="true"><i></i><i></i></div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">SR</a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact" class="nav-cta">Contact</a></li>
+<header id="hd">
+ <nav class="wrap" aria-label="Primary">
+  <a href="#home" class="logo">shashikanth<b>.r</b></a>
+  <button class="burger" id="bg" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  <ul class="links" id="lk">
+   <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#expertise">Expertise</a></li>
+   <li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li>
+   <li><a href="#work">Let's Work Together</a></li>
+  </ul>
+ </nav>
+ <div class="progress" id="pg"></div>
+</header>
+
+<main id="main">
+<section class="hero" id="home"><svg class="bird" style="top:16%;animation-delay:0s;width:44px" viewBox="0 0 40 20" aria-hidden="true"><path d="M2 10Q10-2 20 10Q30-2 38 10Q30 6 20 14Q10 6 2 10Z"/></svg><svg class="bird" style="top:26%;animation-delay:-9s;width:30px" viewBox="0 0 40 20" aria-hidden="true"><path d="M2 10Q10-2 20 10Q30-2 38 10Q30 6 20 14Q10 6 2 10Z"/></svg><svg class="bird" style="top:10%;animation-delay:-16s;width:36px" viewBox="0 0 40 20" aria-hidden="true"><path d="M2 10Q10-2 20 10Q30-2 38 10Q30 6 20 14Q10 6 2 10Z"/></svg>
+ <div class="wrap">
+  <div>
+   <div class="avail rv"><span class="dot"></span>Available for projects &amp; opportunities</div>
+   <h1 id="h1">Engineering Ideas Into <span class="grad">Intelligent Digital Experiences.</span></h1>
+   <p class="lead rv">I'm Shashikanth R, a Python developer focused on AI-powered applications, backend engineering and building practical software solutions.</p>
+   <div class="pills rv" style="--i:1"><span class="pill">Python Development</span><span class="pill">AI Integration</span><span class="pill">Backend Engineering</span><span class="pill">Full-Stack Development</span></div>
+   <div class="cta rv" style="--i:2">
+    <a class="btn p" href="#projects">View My Projects →</a>
+    <a class="btn" href="#work">Let's Work Together</a>
+   </div>
+   <div class="soc rv" style="--i:3"><a href="https://github.com/Shashikanth-R" target="_blank" rel="noopener">GitHub ↗</a><a href="https://www.linkedin.com/in/shashikanth-r" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+  </div>
+  <div class="dash rv" style="--i:2" aria-hidden="true">
+   <div class="term" id="tilt">
+    <div class="tbar"><i></i><i></i><i></i><span>assistant.py — illustrative</span></div>
+    <div class="tbody" id="tb"></div>
+    <div class="flow"><span>Query</span><em></em><span>Retriever</span><em></em><span>LLM</span><em></em><span>Answer</span></div>
+   </div>
+   <span class="float a">POST /api/route</span><span class="float b">LangGraph · RAG</span><span class="float c">200 OK · Flask</span>
+  </div>
+ </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div id="mq"><span>Python</span><span>Flask</span><span>REST APIs</span><span>LangChain</span><span>LangGraph</span><span>RAG</span><span>LLM Integration</span><span>MySQL</span><span>JavaScript</span><span>Java</span><span>C++</span><span>Docker</span><span>Git</span><span>GitHub</span><span>Linux</span></div></div><div class="wrap" style="padding:90px 0 20px"><p class="stm" id="stm">Built to solve. Designed to scale. Turning complex problems into practical solutions.</p></div>
+
+<section id="about"><div class="wrap">
+ <span class="eyebrow rv">About</span>
+ <h2 class="rv">Engineering With <span class="grad">Purpose.</span></h2>
+ <svg class="snake" viewBox="0 0 600 34" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1000" d="M0 17Q25 -3 50 17T100 17T150 17T200 17T250 17T300 17T350 17T400 17T450 17T500 17T550 17T600 17"/></svg>
+ <p class="lead rv">I'm a Computer Science Engineering student who builds intelligent applications and reliable backend systems in Python. I enjoy taking a problem from first understanding to a practical, working solution, with clean implementation and meaningful functionality.</p>
+ <div class="grid hl">
+  <div class="card rv"><span class="ico">🎓</span><b>Computer Science</b><span>Engineering background</span></div>
+  <div class="card rv" style="--i:1"><span class="ico">🐍</span><b>Python Development</b><span>Backend systems</span></div>
+  <div class="card rv" style="--i:2"><span class="ico">🤖</span><b>AI-Integrated Apps</b><span>LLMs &amp; Retrieval-Augmented Generation</span></div>
+  <div class="card rv" style="--i:3"><span class="ico">🔌</span><b>RESTful APIs</b><span>Database-driven software</span></div>
+ </div>
+ <p class="quote rv">Turning complex problems into practical solutions.</p>
+</div></section>
+
+<section id="expertise"><div class="wrap">
+ <span class="eyebrow rv">Expertise</span>
+ <h2 class="rv">What I Bring to the <span class="grad">Table.</span></h2>
+ <div class="grid skills">
+  <div class="card rv"><h3>🐍 Programming</h3><div class="chips"><span class="chip">Python <small>Proficient</small></span><span class="chip">Java</span><span class="chip">C++</span></div><div class="bar"><i style="--w:85%"></i></div><p class="note">Python is my primary language.</p></div>
+  <div class="card rv" style="--i:1"><h3>🎨 Frontend</h3><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div></div>
+  <div class="card rv" style="--i:2"><h3>⚙️ Backend</h3><div class="chips"><span class="chip">Flask</span><span class="chip">REST APIs</span></div></div>
+  <div class="card rv"><h3>🧠 AI &amp; Frameworks</h3><div class="chips"><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">RAG</span><span class="chip">LLM Integration</span></div></div>
+  <div class="card rv" style="--i:1"><h3>🗄️ Database</h3><div class="chips"><span class="chip">MySQL</span></div></div>
+  <div class="card rv" style="--i:2"><h3>🛠️ Tools</h3><div class="chips"><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Linux (Ubuntu)</span><span class="chip">Windows</span></div></div>
+ </div>
+ <p class="quote rv">Built to solve. Designed to scale.</p>
+</div></section>
+
+<section id="experience"><div class="wrap">
+ <span class="eyebrow rv">Experience</span>
+ <h2 class="rv">Professional <span class="grad">Experience.</span></h2>
+ <!-- EDIT: replace/extend with verified roles, companies and dates from your resume. -->
+ <div class="tl" id="tl"></div>
+</div></section>
+
+<section id="projects" style="background: var(--bg2); border-block: 1px solid var(--line);">
+  <div class="wrap">
+    <span class="eyebrow rv">Selected Projects</span>
+    <h2 class="rv">Selected Work. <span class="grad">Real Engineering.</span></h2>
+    <p class="lead rv" style="margin-bottom: 24px;">
+      Four flagship software products showcasing full-stack development, graph algorithms, RAG pipelines, and production deployments.
+    </p>
+
+    <div class="project-showcase">
+      <!-- PROJECT 01: MALLBUDDY -->
+      <article class="project-card rv" id="project-mallbuddy">
+        <div class="project-layout">
+          <div class="project-info">
+            <div class="project-number">01</div>
+            <h3 class="project-title">MallBuddy</h3>
+            <span class="project-subtitle">AI-Powered Smart Mall Navigation &amp; Assistant</span>
+            <p class="project-desc">
+              An intelligent mall platform integrating indoor navigation, store discovery, promotional offers, and an AI-powered conversational assistant.
+            </p>
+            <ul class="project-contrib">
+              <li>Developed graph-based A* shortest-path navigation considering spatial structure, floor boundaries, and walking paths.</li>
+              <li>Built REST APIs for dynamic management of mall layouts, stores, navigation waypoints, and offers.</li>
+              <li>Implemented RAG using mall-specific information stored in a vector database for contextual assistance.</li>
+              <li>Focused on modularity, scalability, and strict data consistency between navigation graph and database.</li>
             </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <p class="hero-greeting">Hello, I'm</p>
-                <h1 class="hero-name">Shashikanth R</h1>
-                <div class="hero-title">
-                    <span class="typing-text"></span>
-                    <span class="cursor">|</span>
-                </div>
-                <p class="hero-description">
-                    B.E. student in Computer Science & Engineering at CMRIT Bangalore,
-                    passionate about building impactful software solutions.
-                </p>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
-                </div>
-                <div class="hero-socials">
-                    <a href="https://github.com/Shashikanth-R" target="_blank" aria-label="GitHub">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                        </svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/shashikanth-r" target="_blank" aria-label="LinkedIn">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                        </svg>
-                    </a>
-                    <a href="https://leetcode.com/u/Shashikanth_R/" target="_blank" aria-label="LeetCode">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" />
-                        </svg>
-                    </a>
-                    <a href="mailto:kanthrshashi@gmail.com" aria-label="Email">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
-                        </svg>
-                    </a>
-                </div>
+            <div class="project-tags">
+              <span class="tag tag-accent">Python</span>
+              <span class="tag">Flask</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">A* Algorithm</span>
+              <span class="tag">LangChain</span>
+              <span class="tag">LangGraph</span>
+              <span class="tag">RAG</span>
+              <span class="tag">REST APIs</span>
             </div>
-            <div class="hero-visual">
-                <div class="hero-shape">
-                    <img src="Profile2.png" alt="Shashikanth R" class="hero-image">
-                </div>
-                <div class="hero-dots"></div>
+            <div class="project-links">
+              <a href="https://mallbuddy-ai-ajva.onrender.com" target="_blank" rel="noopener noreferrer" class="btn p btn-sm">Live Demo ↗</a>
+              <a href="https://github.com/Shashikanth-R" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub ↗</a>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
+          </div>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="about-intro">
-                        Seeking a <strong>Junior Software/Web Developer</strong> role where I can utilize my programming
-                        skills and practical experience in AI-based projects.
-                    </p>
-                    <p>
-                        As a <strong>Computer Science Engineering student</strong> at CMR Institute of Technology,
-                        Bangalore,
-                        I aim to contribute to real-world software and intelligent systems while gaining hands-on
-                        industry experience.
-                    </p>
-                    <p>
-                        With expertise in <strong>Python, Flask, and AI integration</strong>, I've built projects
-                        ranging from
-                        AI-powered chatbots to client websites. I actively participate in hackathons and have been
-                        recognized by
-                        <strong>IEEE Young Professionals Board</strong> for organizing tech events.
-                    </p>
-                    <div class="about-highlights">
-                        <div class="highlight-item">
-                            <span class="highlight-number">8.65</span>
-                            <span class="highlight-label">CGPA</span>
-                        </div>
-                        <div class="highlight-item">
-                            <span class="highlight-number">5+</span>
-                            <span class="highlight-label">Projects</span>
-                        </div>
-                        <div class="highlight-item">
-                            <span class="highlight-number">9+</span>
-                            <span class="highlight-label">Hackathons</span>
-                        </div>
-                    </div>
+          <div class="project-mockup">
+            <div class="mockup-window">
+              <div class="mockup-bar">
+                <div class="mockup-bar-dots"><span></span><span></span><span></span></div>
+                <span>mallbuddy.ai — indoor navigation</span>
+                <span class="mockup-bar-url">Floor 2 · Route Active</span>
+              </div>
+              <div class="mockup-canvas">
+                <div class="mall-map-grid" id="mall-interactive-grid" title="Interactive A* Route Grid">
+                  <!-- Grid populated dynamically by JS -->
                 </div>
+                <div class="mall-status-row">
+                  <span>📍 Entrance → Anchor Store</span>
+                  <button class="btn btn-sm" id="recalc-route-btn" style="padding: 4px 8px; font-size: 0.72rem;">Recalculate A*</button>
+                </div>
+              </div>
             </div>
+            <div class="mockup-caption">Illustrative interface mockup demonstrating A* shortest-path navigation logic.</div>
+          </div>
         </div>
-    </section>
+      </article>
 
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">Java</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Web Technologies</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">JavaScript</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Frameworks</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Flask</span>
-                        <span class="skill-tag">Django</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Databases</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MySQL</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools & OS</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">GitHub</span>
-                        <span class="skill-tag">Windows</span>
-                        <span class="skill-tag">Ubuntu</span>
-                    </div>
-                </div>
+      <!-- PROJECT 02: EDUCATION GUIDE -->
+      <article class="project-card reverse rv" id="project-education-guide">
+        <div class="project-layout">
+          <div class="project-info">
+            <div class="project-number">02</div>
+            <h3 class="project-title">Education Guide</h3>
+            <span class="project-subtitle">Educational Institution Discovery Platform</span>
+            <p class="project-desc">
+              A Dubai-based educational institution discovery platform that helps students and parents discover and compare academic institutions through structured listings and verified reviews.
+            </p>
+            <ul class="project-contrib">
+              <li>Developed advanced multi-criteria search and categorized filtering functionality.</li>
+              <li>Implemented comprehensive user review and rating submission systems with moderation states.</li>
+              <li>Built structured PHP backend with normalized MySQL database for rapid CRUD operations.</li>
+              <li>Configured and deployed through cPanel for production reliability and live user traffic.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tag tag-accent">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">PHP</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">cPanel Deployment</span>
+              <span class="tag">Search &amp; Filter</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-
-                <article class="project-card featured">
-                    <div class="project-content">
-                        <span class="project-label">Client Project</span>
-                        <h3>Kavitha Beauty Saloon</h3>
-                        <p>A modern, responsive website for a beauty salon featuring appointment booking, service
-                            showcase, and contact forms. Built from client consultation to deployment.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>Flask</span>
-                            <span>MySQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://kavitha-beauty-salon-2.onrender.com" target="_blank" class="project-link">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                    <polyline points="15 3 21 3 21 9" />
-                                    <line x1="10" y1="14" x2="21" y2="3" />
-                                </svg>
-                                Live Site
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-content">
-                        <span class="project-label">AI Project</span>
-                        <h3>VoxiScribe</h3>
-                        <p>AI-powered voice-to-text exam scribe enabling students with disabilities to write exams
-                            independently. Features speech recognition and real-time transcription.</p>
-                        <div class="project-tech">
-                            <span>AI</span>
-                            <span>Speech Recognition</span>
-                            <span>Accessibility</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-content">
-                        <span class="project-label">Educational</span>
-                        <h3>Algorithm Virtual Labs</h3>
-                        <p>Interactive visualizations for sorting algorithms with step-by-step execution, user input
-                            functionality, and flow diagrams for better concept clarity.</p>
-                        <div class="project-tech">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://shashikanth-r.github.io/bubble_sort/info.html" target="_blank"
-                                class="project-link">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                    <polyline points="15 3 21 3 21 9" />
-                                    <line x1="10" y1="14" x2="21" y2="3" />
-                                </svg>
-                                Bubble Sort
-                            </a>
-                            <a href="https://shashikanth-r.github.io/Selection_sort-virtual-lab-/info.html"
-                                target="_blank" class="project-link">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                    <polyline points="15 3 21 3 21 9" />
-                                    <line x1="10" y1="14" x2="21" y2="3" />
-                                </svg>
-                                Selection Sort
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-content">
-                        <span class="project-label">Full Stack + AI</span>
-                        <h3>RecipeBuddy</h3>
-                        <p>A comprehensive recipe management platform with AI-powered chatbot using LangGraph and Groq's
-                            LLaMA. Features recipe CRUD, smart filtering, community sharing, likes, and comments.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>Flask</span>
-                            <span>LangGraph</span>
-                            <span>Groq AI</span>
-                            <span>MySQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://recipebuddy.onrender.com" target="_blank" class="project-link">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                    <polyline points="15 3 21 3 21 9" />
-                                    <line x1="10" y1="14" x2="21" y2="3" />
-                                </svg>
-                                Live Site
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-content">
-                        <span class="project-label">Client Project</span>
-                        <h3>Richard Miller Audios</h3>
-                        <p>Fully responsive 3D-themed website for a premium home theatre brand. Features gallery,
-                            founder page, and contact sections showcasing completed works.</p>
-                        <div class="project-tech">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                        </div>
-                    </div>
-                </article>
-
+            <div class="project-links">
+              <a href="https://educationguidebh.com/" target="_blank" rel="noopener noreferrer" class="btn p btn-sm">Live Site ↗</a>
             </div>
-        </div>
-    </section>
+          </div>
 
-    <!-- Education Section -->
-    <section class="education" id="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2023 - 2027</span>
-                        <h3>Bachelor of Engineering</h3>
-                        <p class="timeline-place">CMR Institute of Technology, Bangalore</p>
-                        <p class="timeline-details">Computer Science & Engineering</p>
-                        <span class="timeline-score">CGPA: 8.56</span>
-                    </div>
+          <div class="project-mockup">
+            <div class="mockup-window">
+              <div class="mockup-bar">
+                <div class="mockup-bar-dots"><span></span><span></span><span></span></div>
+                <span>educationguidebh.com</span>
+                <span class="mockup-bar-url">https://educationguidebh.com</span>
+              </div>
+              <div class="mockup-canvas">
+                <div class="edu-search-bar">
+                  <span>🔍</span>
+                  <span>Search institutions in Dubai / Bahrain…</span>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2021 - 2023</span>
-                        <h3>Pre-University Course</h3>
-                        <p class="timeline-place">St. Joseph's Indian Composite PU College, Bangalore</p>
-                        <p class="timeline-details">Science Stream</p>
-                        <span class="timeline-score">94.5%</span>
-                    </div>
+                <div class="edu-cards-mini">
+                  <div class="edu-card-mini">
+                    <b>Dubai Academic City</b>
+                    <span>Engineering &amp; Tech</span>
+                    <div class="edu-card-rating">★★★★★ 4.9 (128 reviews)</div>
+                  </div>
+                  <div class="edu-card-mini">
+                    <b>Gulf Institute of Design</b>
+                    <span>Architecture &amp; Arts</span>
+                    <div class="edu-card-rating">★★★★☆ 4.7 (94 reviews)</div>
+                  </div>
+                  <div class="edu-card-mini">
+                    <b>International Academy</b>
+                    <span>K-12 Curricula</span>
+                    <div class="edu-card-rating">★★★★★ 4.8 (215 reviews)</div>
+                  </div>
+                  <div class="edu-card-mini">
+                    <b>Business School UAE</b>
+                    <span>Management</span>
+                    <div class="edu-card-rating">★★★★☆ 4.6 (87 reviews)</div>
+                  </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2021</span>
-                        <h3>10th Grade</h3>
-                        <p class="timeline-place">Sree Gayathri English School, Bangalore</p>
-                        <span class="timeline-score">98.08%</span>
-                    </div>
-                </div>
+              </div>
             </div>
+            <div class="mockup-caption">Illustrative interface mockup of the live directory and review platform.</div>
+          </div>
         </div>
-    </section>
+      </article>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <p class="contact-intro">
-                    I'm currently looking for internship and junior developer opportunities.
-                    Whether you have a question or just want to say hi, feel free to reach out!
-                </p>
-                <div class="contact-methods">
-                    <a href="mailto:kanthrshashi@gmail.com" class="contact-card">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
-                            </svg>
-                        </div>
-                        <div class="contact-info">
-                            <span class="contact-label">Email</span>
-                            <span class="contact-value">kanthrshashi@gmail.com</span>
-                        </div>
-                    </a>
-                    <a href="tel:+919008904660" class="contact-card">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-                            </svg>
-                        </div>
-                        <div class="contact-info">
-                            <span class="contact-label">Phone</span>
-                            <span class="contact-value">+91 9008904660</span>
-                        </div>
-                    </a>
-                    <a href="https://www.linkedin.com/in/shashikanth-r" target="_blank" class="contact-card">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                            </svg>
-                        </div>
-                        <div class="contact-info">
-                            <span class="contact-label">LinkedIn</span>
-                            <span class="contact-value">shashikanth-r</span>
-                        </div>
-                    </a>
-                    <a href="https://github.com/Shashikanth-R" target="_blank" class="contact-card">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                        </div>
-                        <div class="contact-info">
-                            <span class="contact-label">GitHub</span>
-                            <span class="contact-value">Shashikanth-R</span>
-                        </div>
-                    </a>
-                </div>
-                <a href="mailto:kanthrshashi@gmail.com" class="btn btn-primary btn-large">Say Hello</a>
+      <!-- PROJECT 03: VOXISCRIBE -->
+      <article class="project-card rv" id="project-voxiscribe">
+        <div class="project-layout">
+          <div class="project-info">
+            <div class="project-number">03</div>
+            <h3 class="project-title">VoxiScribe</h3>
+            <span class="project-subtitle">AI-Powered Voice-to-Text Exam Scribe</span>
+            <p class="project-desc">
+              An accessibility-focused examination platform that enables students with disabilities to independently write academic examinations using real-time voice-to-text technology and biometric authentication.
+            </p>
+            <ul class="project-contrib">
+              <li>Implemented real-time speech recognition and precise speech-to-text transcription engine.</li>
+              <li>Integrated facial authentication using Azure Face API to ensure examination integrity.</li>
+              <li>Developed hands-free voice-based navigation commands for navigating exam question sets.</li>
+              <li>Built scalable Flask backend with MySQL database to record encrypted candidate answers.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tag tag-accent">Python</span>
+              <span class="tag">Flask</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Speech Recognition</span>
+              <span class="tag">Azure Face API</span>
+              <span class="tag">Voice Navigation</span>
+              <span class="tag">JavaScript</span>
             </div>
-        </div>
-    </section>
+            <div class="project-links">
+              <a href="https://github.com/Shashikanth-R" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub ↗</a>
+              <span class="tag">In Development / Institutional Testing</span>
+            </div>
+          </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>Designed & Built by <strong>Shashikanth R</strong></p>
-            <p class="footer-year">© 2025</p>
+          <div class="project-mockup">
+            <div class="mockup-window">
+              <div class="mockup-bar">
+                <div class="mockup-bar-dots"><span></span><span></span><span></span></div>
+                <span>voxiscribe — secure examination session</span>
+                <span class="mockup-bar-url">Face Verified: Active</span>
+              </div>
+              <div class="mockup-canvas">
+                <div class="vox-mic-box">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #DC2626; font-size: 0.8rem;">● REC</span>
+                    <span style="font-family: var(--fm); font-size: 0.78rem; font-weight: 600;">Listening to candidate…</span>
+                  </div>
+                  <div class="vox-wave">
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                  </div>
+                </div>
+                <div class="vox-transcription">
+                  <strong>Q3:</strong> "The primary advantage of A* search over standard Dijkstra is its use of admissible heuristics to prune search space..."
+                </div>
+              </div>
+            </div>
+            <div class="mockup-caption">Illustrative interface mockup of the assistive voice examination environment.</div>
+          </div>
         </div>
-    </footer>
+      </article>
 
-    <script src="script.js"></script>
+      <!-- PROJECT 04: RECIPE BUDDY -->
+      <article class="project-card reverse rv" id="project-recipe-buddy">
+        <div class="project-layout">
+          <div class="project-info">
+            <div class="project-number">04</div>
+            <h3 class="project-title">Recipe Buddy</h3>
+            <span class="project-subtitle">AI-Powered Recipe Management &amp; Cooking Assistant</span>
+            <p class="project-desc">
+              A Flask-based culinary management platform integrated with an intelligent cooking assistant powered by LangGraph state workflows and LLaMA.
+            </p>
+            <ul class="project-contrib">
+              <li>Developed full recipe CRUD lifecycle with structured dietary and nutritional indexing.</li>
+              <li>Integrated normalized MySQL database schema for recipes, ingredients, and categories.</li>
+              <li>Built an intelligent conversational cooking assistant using LangGraph state machines and LLaMA.</li>
+              <li>Implemented rapid recipe search, ingredient filtering, and contextual cooking step advice.</li>
+            </ul>
+            <div class="project-tags">
+              <span class="tag tag-accent">Python</span>
+              <span class="tag">Flask</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">LangGraph</span>
+              <span class="tag">LLaMA</span>
+              <span class="tag">AI Assistant</span>
+            </div>
+            <div class="project-links">
+              <a href="https://recipebuddy.onrender.com" target="_blank" rel="noopener noreferrer" class="btn p btn-sm">Live Demo ↗</a>
+              <a href="https://github.com/Shashikanth-R" target="_blank" rel="noopener noreferrer" class="btn btn-sm">GitHub ↗</a>
+            </div>
+          </div>
+
+          <div class="project-mockup">
+            <div class="mockup-window">
+              <div class="mockup-bar">
+                <div class="mockup-bar-dots"><span></span><span></span><span></span></div>
+                <span>recipebuddy.ai — assistant</span>
+                <span class="mockup-bar-url">LLaMA + LangGraph</span>
+              </div>
+              <div class="mockup-canvas">
+                <div class="recipe-assistant-box">
+                  <div class="recipe-chat-bubble">
+                    <b>User:</b> I have tomatoes, garlic, and pasta. What can I prepare in under 20 minutes?
+                  </div>
+                  <div class="recipe-chat-bubble bot">
+                    <b>Recipe Buddy (AI):</b> You can prepare an authentic Spaghetti Pomodoro. Step 1: Gently sauté minced garlic in olive oil for 2 minutes...
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mockup-caption">Illustrative interface mockup of the AI cooking assistant workflow.</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section id="work" class="cc"><div class="wrap">
+ <span class="eyebrow rv">Let's Work Together</span>
+ <h2 class="rv">Have a Problem Worth Solving? <span class="grad">Let's Build It.</span></h2>
+ <p class="lead rv">Great products start with understanding the problem. Your idea deserves more than just code. It deserves thoughtful engineering.</p>
+ <p class="lead rv">Let's turn your requirements into a reliable, functional digital solution.</p>
+ <div class="duo">
+  <div class="steps">
+   <div class="st rv" style="--i:0"><div class="ck">✓</div><div><b>Understand</b><span>Clarify the problem and requirements</span></div></div>
+   <div class="st rv" style="--i:1"><div class="ck">✓</div><div><b>Design</b><span>Plan the architecture, APIs and data</span></div></div>
+   <div class="st rv" style="--i:2"><div class="ck">✓</div><div><b>Build</b><span>Clean, maintainable implementation</span></div></div>
+   <div class="st rv" style="--i:3"><div class="ck">✓</div><div><b>Deliver</b><span>Deploy, review and refine together</span></div></div>
+  </div>
+  <div class="card chat rv"><small>Illustrative conversation</small>
+   <div class="bub cl2" style="--d:0">I need a chatbot that answers questions from our documents.</div>
+   <div class="bub me" style="--d:1">That sounds like a RAG use case. Let's start with your requirements and data.</div>
+   <div class="bub cl2" style="--d:2">Can it connect to our existing database?</div>
+   <div class="bub me" style="--d:3">Yes, through a REST API layer. Let's scope it together.</div>
+   <div class="bub cl2 typing" style="--d:4"><i></i><i></i><i></i></div>
+  </div>
+ </div>
+ <div class="grid svc">
+  <div class="card rv">🌐 Website and web application development</div><div class="card rv" style="--i:1">🐍 Python and Flask backend development</div>
+  <div class="card rv" style="--i:2">🔌 REST API integration</div><div class="card rv" style="--i:3">💬 AI chatbot and LLM integration</div>
+  <div class="card rv">📚 RAG-based application development</div><div class="card rv" style="--i:1">🗄️ Database integration</div>
+  <div class="card rv" style="--i:2">🔧 Application enhancements and maintenance</div>
+  <div class="card rv" style="--i:3;display:grid;place-items:center;text-align:center;color:var(--tx2)">Clear communication. Thoughtful development. Practical results.</div>
+ </div>
+ <a class="btn p lg rv" href="#contact">Let's Discuss Your Project →</a>
+</div></section>
+
+<section id="contact"><div class="bf" style="left:4%;top:14%;animation-delay:0s"><span>🦋</span></div><div class="bf" style="left:48%;top:8%;animation-delay:-5s"><span>🦋</span></div><div class="bf" style="left:80%;top:70%;animation-delay:-9s"><span>🦋</span></div><div class="wrap">
+ <span class="eyebrow rv">Contact</span>
+ <h2 class="rv">Let's <span class="grad">Connect.</span></h2>
+ <div class="grid ct">
+  <div class="rv"><p class="lead">Technology is valuable when it creates meaningful outcomes. Tell me what you're building.</p>
+   <div class="cl">
+    <a href="mailto:kanthrshashi@gmail.com">Email <small>kanthrshashi@gmail.com</small></a>
+    <a href="https://www.linkedin.com/in/shashikanth-r" target="_blank" rel="noopener">LinkedIn <small>shashikanth-r ↗</small></a>
+    <a href="https://github.com/Shashikanth-R" target="_blank" rel="noopener">GitHub <small>Shashikanth-R ↗</small></a>
+    <a href="https://leetcode.com/u/Shashikanth_R/" target="_blank" rel="noopener">LeetCode <small>Shashikanth_R ↗</small></a>
+   </div></div>
+  <form class="card rv" id="cf" novalidate style="--i:1">
+   <label>Name<input id="n" name="name" autocomplete="name" required><span class="err" data-for="n"></span></label>
+   <label>Email<input id="e" name="email" type="email" autocomplete="email" required><span class="err" data-for="e"></span></label>
+   <label>Project details<textarea id="m" name="message" required></textarea><span class="err" data-for="m"></span></label>
+   <button class="btn p" type="submit">Send Message</button>
+   <p id="fs" role="status" aria-live="polite">Note: no form service is configured yet. Submitting opens your email app with the message pre-filled.</p>
+  </form>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Let's build something that works beyond the idea. · © <span id="yr"></span> Shashikanth R</div></footer>
+<svg class="pet" id="cat" viewBox="0 0 80 50" aria-hidden="true"><g class="cb"><path class="tail" d="M18 24Q6 14 10 4" stroke="#FF9F43" stroke-width="5" fill="none" stroke-linecap="round"/><rect class="lg l1" x="26" y="34" width="5" height="13" rx="2.5"/><rect class="lg l2" x="34" y="34" width="5" height="13" rx="2.5"/><rect class="lg l3" x="46" y="34" width="5" height="13" rx="2.5"/><rect class="lg l4" x="54" y="34" width="5" height="13" rx="2.5"/><ellipse cx="38" cy="28" rx="21" ry="11" fill="#FF9F43"/><circle cx="62" cy="20" r="10" fill="#FF9F43"/><path d="M55 14L57 3L64 11ZM63 11L70 3L72 15Z" fill="#FF9F43"/><circle cx="65" cy="19" r="1.7" fill="#14162B"/><path d="M69 22l3 1-3 1z" fill="#FF7AB6"/></g></svg>
+<button class="top" id="top" aria-label="Back to top">↑</button>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+$('#yr').textContent=new Date().getFullYear();
+
+/* Content data: edit here */
+const EXPERIENCE=[
+ {t:'Software Project Development',m:'MallBuddy · Education Guide · VoxiScribe · Recipe Buddy',p:'Designed and built four applications spanning Flask and PHP backends, MySQL databases, REST APIs and AI assistants. Education Guide is deployed for real-world use.'},
+ {t:'Organiser — Rapid Innovation Challenge',m:'IEEE Young Professionals Board · 2024 recognition',p:'Recognised by the IEEE Young Professionals Board for organising the Rapid Innovation Challenge.'}
+];
+$('#tl').innerHTML=EXPERIENCE.map((x,i)=>`<div class="card rv" style="--i:${i}"><h3>${x.t}</h3><div class="meta">${x.m}</div><p>${x.p}</p></div>`).join('');
+
+/* Animated headline words */
+const h=$('#h1');let w=0;
+(function split(n){[...n.childNodes].forEach(c=>{
+ if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(t=>{if(!t.trim()){f.append(t);return}const s=document.createElement('span');s.className='word';s.style.setProperty('--w',w++);s.textContent=t;f.append(s)});c.replaceWith(f)}
+ else if(c.nodeType===1&&c.classList.contains('grad')){const t=c.textContent;c.textContent='';t.split(/(\s+)/).forEach(x=>{if(!x.trim()){c.append(x);return}const s=document.createElement('span');s.className='word';s.style.setProperty('--w',w++);s.textContent=x;c.append(s)})}
+})})(h);
+
+/* Typing terminal */
+const lines=[
+'<span class="k">from</span> flask <span class="k">import</span> Flask, jsonify',
+'<span class="k">from</span> langgraph.graph <span class="k">import</span> StateGraph','',
+'<span class="k">@app</span>.route(<span class="s">"/api/ask"</span>)',
+'<span class="k">def</span> ask():',
+'  docs = retriever.search(query)',
+'  <span class="k">return</span> jsonify(graph.invoke(docs))','',
+'<span class="ok">✓ 200 OK — answer grounded in context</span>'];
+const tb=$('#tb');
+if(reduce){tb.innerHTML=lines.join('\n').replace(/\n/g,'<br>')}
+else{let i=0;(function nx(){if(i>=lines.length){tb.insertAdjacentHTML('beforeend','<span class="caret"></span>');return}
+ tb.insertAdjacentHTML('beforeend',lines[i++]+'<br>');setTimeout(nx,420)})()}
+
+/* Mall map mockup */
+const mallGrid = $('#mall-interactive-grid') || $('#map');
+const recalcBtn = $('#recalc-route-btn') || $('#recalc-a-star');
+if (mallGrid) {
+  const defaultPath = [0, 1, 2, 10, 18, 26, 27, 28, 36, 44, 52, 60, 61, 62, 63];
+  const defaultWalls = [5, 12, 13, 21, 29, 30, 41, 42, 50];
+
+  const renderGrid = () => {
+    mallGrid.innerHTML = '';
+    for (let i = 0; i < 64; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'map-cell';
+      if (i === 0) cell.classList.add('start');
+      else if (i === 63) cell.classList.add('end');
+      else if (defaultWalls.includes(i)) cell.classList.add('wall');
+      else if (defaultPath.includes(i)) cell.classList.add('path');
+      mallGrid.appendChild(cell);
+    }
+  };
+  renderGrid();
+
+  if (recalcBtn) {
+    recalcBtn.onclick = () => {
+      const cells = mallGrid.querySelectorAll('.map-cell.path');
+      cells.forEach(c => c.classList.remove('path'));
+      let step = 0;
+      const interval = setInterval(() => {
+        if (step >= defaultPath.length) {
+          clearInterval(interval);
+          return;
+        }
+        const idx = defaultPath[step];
+        const cell = mallGrid.children[idx];
+        if (cell && !cell.classList.contains('start') && !cell.classList.contains('end')) {
+          cell.classList.add('path');
+        }
+        step++;
+      }, 60);
+    };
+  }
+}
+
+/* Reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px'});
+$$('.rv').forEach(el=>io.observe(el));
+
+/* Header, progress, back-to-top, active link */
+const hd=$('#hd'),pg=$('#pg'),top=$('#top');
+const links=$$('.links a'),secs=links.map(a=>$(a.getAttribute('href')));
+addEventListener('scroll',()=>{const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;
+ hd.classList.toggle('s',y>20);pg.style.width=(y/max*100)+'%';top.classList.toggle('on',y>700)},{passive:true});
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50%'});
+secs.forEach(s=>s&&so.observe(s));
+top.onclick=()=>scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+
+/* Mobile menu */
+const bg=$('#bg'),lk=$('#lk');
+bg.onclick=()=>{const o=lk.classList.toggle('open');bg.setAttribute('aria-expanded',o)};
+links.forEach(a=>a.addEventListener('click',()=>{lk.classList.remove('open');bg.setAttribute('aria-expanded',false)}));
+
+/* Card spotlight + 3D tilt (pointer devices only) */
+if(!reduce&&matchMedia('(hover:hover)').matches){
+ $$('.card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')}));
+ const tilt=(el,max)=>{el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`rotateY(${x*max}deg) rotateX(${-y*max}deg)`});el.addEventListener('pointerleave',()=>el.style.transform='')};
+ $$('.screen').forEach(s=>tilt(s,10));
+ const t=$('#tilt');t.addEventListener('pointermove',e=>{const r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;t.style.transform=`rotateY(${-8+x*10}deg) rotateX(${4-y*10}deg)`});
+ t.addEventListener('pointerleave',()=>t.style.transform='')}
+
+/* Contact form: client-side validation, mailto fallback */
+const f=$('#cf'),fs=$('#fs');
+const rules={n:v=>v.trim().length>=2||'Please enter your name.',e:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)||'Please enter a valid email.',m:v=>v.trim().length>=10||'Please add a few details (10+ characters).'};
+const check=id=>{const el=$('#'+id),r=rules[id](el.value),er=$(`[data-for=${id}]`);el.setAttribute('aria-invalid',r!==true);er.textContent=r===true?'':r;return r===true};
+Object.keys(rules).forEach(id=>$('#'+id).addEventListener('blur',()=>check(id)));
+f.addEventListener('submit',ev=>{ev.preventDefault();
+ if(!Object.keys(rules).map(check).every(Boolean)){fs.textContent='Please fix the highlighted fields.';return}
+ const b=encodeURIComponent(`Name: ${$('#n').value}\nEmail: ${$('#e').value}\n\n${$('#m').value}`);
+ location.href=`mailto:kanthrshashi@gmail.com?subject=${encodeURIComponent('Project enquiry from '+$('#n').value)}&body=${b}`;
+ fs.textContent='Opening your email app. (No form backend is configured; connect Formspree or similar to send directly.)'});
+
+/* Stack marquee: duplicate for seamless loop */
+const mq=$('#mq');mq.innerHTML+=mq.innerHTML;
+/* Scroll-lit statement */
+const stm=$('#stm');stm.innerHTML=stm.textContent.trim().split(/\s+/).map(w=>`<span>${w}</span>`).join(' ');
+const sw=[...stm.children];
+const lit=()=>{const r=stm.getBoundingClientRect(),p=Math.min(1,Math.max(0,(innerHeight*.85-r.top)/(r.height+innerHeight*.3))),n=Math.round(p*sw.length);sw.forEach((x,i)=>x.classList.toggle('on',i<n))};
+addEventListener('scroll',lit,{passive:true});lit();
+/* Cat follows scroll progress and runs while scrolling */
+const cat=$('#cat');let lx=0,dir=1,ct;
+const run=()=>{const m=document.documentElement.scrollHeight-innerHeight,x=(m>0?scrollY/m:0)*(innerWidth-76);
+ if(Math.abs(x-lx)>.5)dir=x>lx?1:-1;lx=x;cat.style.transform=`translateX(${x}px) scaleX(${dir})`;
+ cat.classList.add('go');clearTimeout(ct);ct=setTimeout(()=>cat.classList.remove('go'),180)};
+addEventListener('scroll',run,{passive:true});run();
+})();
+</script>
 </body>
-
 </html>

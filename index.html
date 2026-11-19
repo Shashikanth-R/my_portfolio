@@ -180,9 +180,12 @@ label{font-size:.82rem;color:var(--tx2);display:grid;gap:7px}
 input,textarea{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px;color:var(--tx);font:inherit;width:100%;transition:.25s}
 input:focus,textarea:focus{outline:0;border-color:var(--v);box-shadow:0 0 0 3px rgba(139,92,246,.2)}
 textarea{min-height:140px;resize:vertical}
-.err{color:#fb7185;font-size:.76rem;min-height:1em}
-[aria-invalid=true]{border-color:#fb7185}
-#fs{font-size:.84rem;color:var(--tx2)}
+.err{color:#ef4444;font-size:.76rem;min-height:1em}
+[aria-invalid=true]{border-color:#ef4444}
+#fs{font-size:.84rem;color:var(--tx2);margin-top:6px;transition:color .2s ease;line-height:1.4}
+#fs.success{color:#059669;font-weight:600}
+#fs.error{color:#ef4444;font-weight:500}
+#fs.sending{color:var(--v);font-weight:500}
 footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--tx2);font-size:.84rem}
 .top{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.94);color:var(--tx);cursor:pointer;opacity:0;transform:translateY(20px);pointer-events:none;transition:.4s var(--ease);z-index:90}
 .top.on{opacity:1;transform:none;pointer-events:auto}.top:hover{border-color:var(--c);color:var(--c)}
@@ -627,11 +630,12 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:v
     <a href="https://leetcode.com/u/Shashikanth_R/" target="_blank" rel="noopener">LeetCode <small>Shashikanth_R ↗</small></a>
    </div></div>
   <form class="card rv" id="cf" novalidate style="--i:1">
-   <label>Name<input id="n" name="name" autocomplete="name" required><span class="err" data-for="n"></span></label>
-   <label>Email<input id="e" name="email" type="email" autocomplete="email" required><span class="err" data-for="e"></span></label>
-   <label>Project details<textarea id="m" name="message" required></textarea><span class="err" data-for="m"></span></label>
-   <button class="btn p" type="submit">Send Message</button>
-   <p id="fs" role="status" aria-live="polite">Note: no form service is configured yet. Submitting opens your email app with the message pre-filled.</p>
+   <input type="hidden" name="access_key" value="b5ce8e64-2701-46e3-9542-2dee26458f57">
+   <label>Name<input id="n" name="name" autocomplete="name" placeholder="Your name" required><span class="err" data-for="n"></span></label>
+   <label>Email<input id="e" name="email" type="email" autocomplete="email" placeholder="you@example.com" required><span class="err" data-for="e"></span></label>
+   <label>Project details<textarea id="m" name="message" placeholder="Tell me about your project, goals, or requirements..." required></textarea><span class="err" data-for="m"></span></label>
+   <button class="btn p" id="cf-btn" type="submit">Send Message</button>
+   <p id="fs" role="status" aria-live="polite"></p>
   </form>
  </div>
 </div></section>
@@ -743,16 +747,74 @@ if(!reduce&&matchMedia('(hover:hover)').matches){
  const t=$('#tilt');t.addEventListener('pointermove',e=>{const r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;t.style.transform=`rotateY(${-8+x*10}deg) rotateX(${4-y*10}deg)`});
  t.addEventListener('pointerleave',()=>t.style.transform='')}
 
-/* Contact form: client-side validation, mailto fallback */
-const f=$('#cf'),fs=$('#fs');
-const rules={n:v=>v.trim().length>=2||'Please enter your name.',e:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)||'Please enter a valid email.',m:v=>v.trim().length>=10||'Please add a few details (10+ characters).'};
-const check=id=>{const el=$('#'+id),r=rules[id](el.value),er=$(`[data-for=${id}]`);el.setAttribute('aria-invalid',r!==true);er.textContent=r===true?'':r;return r===true};
+/* Contact form: Web3Forms AJAX submission */
+const f=$('#cf'),fs=$('#fs'),btn=$('#cf-btn')||f.querySelector('button[type="submit"]');
+const rules={
+  n:v=>v.trim().length>=2||'Please enter your name.',
+  e:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)||'Please enter a valid email.',
+  m:v=>v.trim().length>=10||'Please add a few details (10+ characters).'
+};
+const check=id=>{
+  const el=$('#'+id),r=rules[id](el.value),er=$(`[data-for=${id}]`);
+  el.setAttribute('aria-invalid',r!==true);
+  er.textContent=r===true?'':r;
+  return r===true;
+};
 Object.keys(rules).forEach(id=>$('#'+id).addEventListener('blur',()=>check(id)));
-f.addEventListener('submit',ev=>{ev.preventDefault();
- if(!Object.keys(rules).map(check).every(Boolean)){fs.textContent='Please fix the highlighted fields.';return}
- const b=encodeURIComponent(`Name: ${$('#n').value}\nEmail: ${$('#e').value}\n\n${$('#m').value}`);
- location.href=`mailto:kanthrshashi@gmail.com?subject=${encodeURIComponent('Project enquiry from '+$('#n').value)}&body=${b}`;
- fs.textContent='Opening your email app. (No form backend is configured; connect Formspree or similar to send directly.)'});
+
+f.addEventListener('submit',async ev=>{
+  ev.preventDefault();
+  if(!Object.keys(rules).map(check).every(Boolean)){
+    fs.className='error';
+    fs.textContent='Please fix the highlighted fields above.';
+    return;
+  }
+  
+  const nameVal=$('#n').value.trim();
+  const emailVal=$('#e').value.trim();
+  const messageVal=$('#m').value.trim();
+  
+  btn.disabled=true;
+  const originalBtnText=btn.textContent;
+  btn.textContent='Sending...';
+  fs.className='sending';
+  fs.textContent='Sending your message...';
+  
+  try {
+    const res=await fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'Accept':'application/json'
+      },
+      body:JSON.stringify({
+        access_key:'b5ce8e64-2701-46e3-9542-2dee26458f57',
+        name:nameVal,
+        email:emailVal,
+        message:messageVal,
+        from_name:nameVal,
+        subject:`Project Enquiry from ${nameVal} (Portfolio)`
+      })
+    });
+    
+    const data=await res.json();
+    if(res.ok && data.success){
+      f.reset();
+      Object.keys(rules).forEach(id=>$('#'+id).removeAttribute('aria-invalid'));
+      fs.className='success';
+      fs.textContent='✓ Thank you! Your message has been sent successfully. I will get back to you shortly.';
+    } else {
+      fs.className='error';
+      fs.textContent=data.message || 'Something went wrong. Please email directly at kanthrshashi@gmail.com';
+    }
+  } catch(err) {
+    fs.className='error';
+    fs.textContent='Connection error. Please try again or email directly at kanthrshashi@gmail.com';
+  } finally {
+    btn.disabled=false;
+    btn.textContent=originalBtnText;
+  }
+});
 
 /* Stack marquee: duplicate for seamless loop */
 const mq=$('#mq');mq.innerHTML+=mq.innerHTML;
